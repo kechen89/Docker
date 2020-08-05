@@ -8,7 +8,7 @@ ENV NCCL_VERSION=2.3.7-1+cuda9.0
 ENV MXNET_URL=https://s3-us-west-2.amazonaws.com/mxnet-python-packages-gcc5/mxnet_cu90_gcc5-1.4.0-py2.py3-none-manylinux1_x86_64.whl
 
 # Python 2.7 or 3.5 is supported by Ubuntu Xenial out of the box
-ARG python=2.7
+ARG python=3.5
 ENV PYTHON_VERSION=${python}
 
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
@@ -35,7 +35,7 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     rm get-pip.py
 
 # Install TensorFlow, Keras, PyTorch and MXNet
-RUN pip install 'numpy<1.15.0' tensorflow-gpu==${TENSORFLOW_VERSION} keras h5py torch==${PYTORCH_VERSION} torchvision ${MXNET_URL}
+#RUN pip install 'numpy<1.15.0' tensorflow-gpu==${TENSORFLOW_VERSION} keras h5py torch==${PYTORCH_VERSION} torchvision ${MXNET_URL}
 
 # Install Open MPI
 RUN mkdir /tmp/openmpi && \
